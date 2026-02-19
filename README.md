@@ -41,7 +41,6 @@ This repo is intentionally explicit about limits:
 
 
 
-(Your repo view should show exactly these top-level paths.)
 
 ---
 
