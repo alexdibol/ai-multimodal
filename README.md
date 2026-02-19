@@ -1,4 +1,4 @@
-# AI Multimodal — Multimodal Reasoning Under Governance (Colab-First)
+# AI Multimodal — Multimodal Reasoning Under Governance 
 
 Governance-first · auditable · reproducible · human-accountable  
 Built for **MBA / Master of Finance cohorts** and **professional finance / trading / research practitioners** who need mechanism clarity under constraint.
