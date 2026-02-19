@@ -1,1 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>AI Multimodal — Multimodal Reasoning Under Governance</title>
+  <meta name="description" content="AI Multimodal: governance-first, auditable, reproducible, human-accountable multimodal reasoning in finance. One book (PDF) and governed notebooks operationalizing multimodal pipelines as reviewable controllers with explicit state, routing, constraints, termination, and audit artifacts. Educational and non-reliance." />
+
+  <style>
+    :root{
+      --bg:#07080d;
+      --panel:#0f1220;
+      --panel2:#141836;
+      --text:#eef0ff;
+      --muted:#b8bddb;
+      --border:rgba(255,255,255,0.09);
+      --accent:#7aa2ff;
+      --accent2:#6ee7c8;
+      --warn:#ffd27a;
+      --shadow:0 18px 60px rgba(0,0,0,0.45);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(122,162,255,0.14), transparent 60%),
+        radial-gradient(800px 600px at 80% 90%, rgba(110,231,200,0.10), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      line-height:1.75;
+    }
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{color:var(--accent2);text-decoration:underline;}
+    .container{max-width:1180px;margin:0 auto;padding:48px 22px 96px;}
+
+    h1{font-size:40px;margin:0 0 14px;text-transform:uppercase;letter-spacing:0.02em;}
+    h2{font-size:30px;margin:64px 0 14px;}
+    h3{font-size:19px;margin:0 0 10px;}
+    p{color:var(--muted);max-width:110ch;}
+
+    .hero{
+      padding:44px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(20,24,54,0.95), rgba(15,18,32,0.9));
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .pill{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(122,162,255,0.22);
+      background:rgba(122,162,255,0.08);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      margin-top:10px;
+    }
+
+    .callout{
+      margin-top:26px;
+      padding:22px;
+      border-radius:20px;
+      background:linear-gradient(135deg, rgba(122,162,255,0.08), rgba(110,231,200,0.06));
+      border:1px solid rgba(122,162,255,0.22);
+      color:var(--muted);
+    }
+
+    .quicklinks{
+      margin-top:26px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(15,18,32,0.75);
+      box-shadow:0 10px 26px rgba(0,0,0,0.28);
+      color:var(--text);
+      font-weight:800;
+      letter-spacing:0.03em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    .btn:hover{
+      border-color:rgba(110,231,200,0.35);
+      background:rgba(20,24,54,0.72);
+      text-decoration:none;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      margin-top:28px;
+    }
+
+    .card{
+      padding:22px;
+      border-radius:20px;
+      background:var(--panel2);
+      border:1px solid var(--border);
+      box-shadow:0 12px 34px rgba(0,0,0,0.32);
+      display:flex;
+      flex-direction:column;
+      min-height:240px;
+    }
+
+    .card p{margin:0;}
+    .card p + p{ margin-top:10px; }
+
+    .card a{
+      display:inline-block;
+      margin-top:auto;
+      padding-top:14px;
+      font-weight:800;
+      letter-spacing:0.03em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+
+    .reviewbox{
+      margin-top:28px;
+      padding:28px;
+      border-radius:22px;
+      border:1px solid rgba(255,210,122,0.35);
+      background:linear-gradient(135deg, rgba(255,210,122,0.07), rgba(122,162,255,0.06));
+    }
+
+    .stars{
+      color:var(--warn);
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:0.12em;
+      margin-bottom:14px;
+    }
+
+    footer{
+      margin-top:96px;
+      padding-top:32px;
+      border-top:1px solid var(--border);
+      font-size:13px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    .muted{color:var(--muted);}
+    .kbd{
+      display:inline-block;
+      padding:2px 8px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(0,0,0,0.18);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      color:var(--text);
+      vertical-align:baseline;
+    }
+    ul{color:var(--muted);max-width:110ch;margin:10px 0 0 18px;}
+    li{margin:6px 0;}
+  </style>
+</head>
+
+<body>
+<main class="container">
+
+  <!-- INTRODUCTION -->
+  <section class="hero">
+    <h1>AI Multimodal</h1>
+    <div class="pill">Multimodal Reasoning Under Governance · Colab-First</div>
+
+    <p>
+      <strong>AI Multimodal</strong> is a governance-first laboratory for building and reviewing
+      <strong>multimodal analysis pipelines</strong> (text + images, with an explicit refusal posture when evidence is insufficient)
+      in finance and professional settings.
+      It is deliberately explicit about what it is <em>not</em>: it is not a hype demo, not an “autopilot,” and not a substitute for
+      qualified professional review.
+      The purpose is more demanding and more useful: <strong>mechanism clarity under constraint</strong>.
+      If you cannot reconstruct what the system saw, what it inferred from each modality, where it stopped,
+      and what remains unknown, then you do not have a professional system—you have a persuasive narrative.
+    </p>
+
+    <p>
+      Multimodal systems carry a specific risk: the combination of “seeing” and “explaining” can create false certainty.
+      Images anchor interpretations. Text fills gaps. Together, they can look like evidence even when they are not.
+      This repository treats multimodal reasoning as a <strong>controlled evidence workflow</strong>:
+      explicit state, explicit routing, explicit constraints, explicit termination, and mandatory artifacts that make
+      each run reviewable by a third party.
+    </p>
+
+    <p>
+      The objective is not “a smarter model.”
+      The objective is <strong>a defensible controller</strong>: a pipeline that behaves like a contract—bounded, auditable,
+      and human-accountable—so an independent reviewer can answer:
+    </p>
+
+    <ul>
+      <li>what happened</li>
+      <li>why it happened</li>
+      <li>what was supported by inputs vs inferred</li>
+      <li>which constraints were active</li>
+      <li>where the system stopped (and why)</li>
+      <li>what required human escalation</li>
+      <li>what is fact vs assumption vs open item</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Core premise:</strong> <span class="muted">Capability ↑ ⇒ Risk ↑ ⇒ Controls ↑</span><br/>
+      <strong>Operating rule:</strong> <span class="muted">Generation ≠ verification. Outputs remain “Not verified” until independently reviewed.</span>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="quicklinks" aria-label="Quick Links">
+      <a class="btn" href="https://github.com/alexdibol/ai-multimodal" target="_blank" rel="noopener">Repository</a>
+      <a class="btn" href="https://github.com/alexdibol/ai-multimodal/blob/main/book/AI%20MULTIMODAL%20BOOK.pdf" target="_blank" rel="noopener">Read Book (PDF)</a>
+      <a class="btn" href="https://github.com/alexdibol/ai-multimodal/tree/main/notebooks" target="_blank" rel="noopener">Browse Notebooks</a>
+    </div>
+  </section>
+
+  <!-- POSITIONING -->
+  <section>
+    <h2>Explicit Positioning</h2>
+
+    <div class="callout">
+      <p>
+        <strong>AI Multimodal</strong> is intentionally explicit about limits:
+      </p>
+      <ul>
+        <li>It does <strong>not</strong> claim production readiness by default.</li>
+        <li>It does <strong>not</strong> claim correctness of external facts or unseen sources.</li>
+        <li>It does <strong>not</strong> treat generated narratives as evidence.</li>
+        <li>It does <strong>not</strong> promise performance, alpha, deployability, or automation without supervision.</li>
+      </ul>
+      <p class="muted">
+        The goal is reviewability: a third party should be able to audit what happened by inspecting artifacts,
+        not by trusting prose.
+      </p>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section>
+    <h2>The Book</h2>
+
+    <p>
+      The book is the governing specification.
+      The notebooks are not a replacement for the book, and the book is not complete without execution.
+      Together they form a single apprenticeship unit:
+      <strong>mechanism → implementation → stress → gate decision → artifacts</strong>.
+      The professional habit this pillar enforces is simple:
+      do not argue from a screenshot—argue from a reproducible experiment with explicit assumptions and documented failure modes.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>AI Multimodal Book (PDF)</h3>
+        <p>
+          A governance-first framework for multimodal reasoning:
+          how to separate supported claims from inferred content, how to route between modalities without overreach,
+          how to terminate safely, and how to export artifacts that make each run reconstructible.
+          This is the interpretive layer that keeps the labs honest.
+        </p>
+        <a href="https://github.com/alexdibol/ai-multimodal/blob/main/book/AI%20MULTIMODAL%20BOOK.pdf" target="_blank" rel="noopener">
+          Read Book (PDF)
+        </a>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Operating rule:</strong>
+      Interpret notebook outcomes as governed experimental outputs. They are tagged <strong>Not verified</strong> by design
+      until independently reviewed and replicated.
+    </div>
+  </section>
+
+  <!-- NOTEBOOKS -->
+  <section>
+    <h2>The Notebooks (Governed Colab Laboratories)</h2>
+
+    <p>
+      The notebooks operationalize the book as controlled experiments.
+      They are designed to be executed, stressed, and audited—each run producing a reviewable trail:
+      state transitions, routing decisions, termination reasons, and structured outputs that preserve uncertainty.
+      You can browse them directly in the repository under <span class="kbd">/notebooks/</span>.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Notebook Suite — Browse /notebooks/</h3>
+        <p>
+          The governed labs live in the repository notebooks folder.
+          Use these as the execution companion to the book chapters.
+          The intended workflow is: read the chapter mechanism → run the lab → inspect artifacts → stress → decide (advance / revise / reject).
+        </p>
+        <p class="muted">
+          Link: <span class="kbd">/notebooks/</span> (GitHub folder view).
+        </p>
+        <a href="https://github.com/alexdibol/ai-multimodal/tree/main/notebooks" target="_blank" rel="noopener">
+          Open Notebooks Folder
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Chapter Mapping (3-Chapter Spine)</h3>
+        <p>
+          This repo is structured to match the book exactly:
+          <strong>Chapter 1</strong> (why multimodal needs governance),
+          <strong>Chapter 2</strong> (mechanisms: pipelines as controllers),
+          <strong>Chapter 3</strong> (evaluation & acceptance: reproducible stage gates).
+        </p>
+        <p class="muted">
+          Notebook naming and ordering live inside <span class="kbd">/notebooks/</span> and should be read as the lab companion to the corresponding chapter.
+        </p>
+        <a href="https://github.com/alexdibol/ai-multimodal/tree/main/notebooks" target="_blank" rel="noopener">
+          View Notebook Index
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Run Artifacts (Audit Trail)</h3>
+        <p>
+          Each notebook is expected to produce a minimum artifact bundle so a reviewer can reconstruct the run
+          without trusting narrative: environment fingerprint, configuration hash, final state, decision gate output,
+          and a risk/control log describing what triggered and what was applied.
+        </p>
+        <p class="muted">
+          Artifacts make multimodal reasoning reviewable: they preserve modality boundaries and uncertainty.
+        </p>
+        <a href="https://github.com/alexdibol/ai-multimodal/tree/main/notebooks" target="_blank" rel="noopener">
+          Start With Any Notebook
+        </a>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Notebook invariant:</strong>
+      deterministic posture where applicable · explicit state · bounded loops · explicit termination ·
+      structured outputs separating <strong>facts</strong> vs <strong>assumptions</strong> vs <strong>open items</strong> ·
+      artifacts exported every run · all outputs marked <strong>verification_status="Not verified"</strong>.
+    </div>
+  </section>
+
+  <!-- HOW TO USE -->
+  <section>
+    <h2>How to Use This Repository</h2>
+
+    <p>
+      Recommended posture:
+    </p>
+
+    <ul>
+      <li><strong>Read</strong> the relevant chapter in <span class="kbd">/book/</span> (mechanism + acceptance rules).</li>
+      <li><strong>Run</strong> the corresponding notebook(s) in <span class="kbd">/notebooks/</span> as-is (no edits).</li>
+      <li><strong>Inspect</strong> artifacts: termination reason, modality boundaries, open items, refusal logic.</li>
+      <li><strong>Stress</strong> structurally: reduce evidence, introduce ambiguity, perturb inputs, tighten constraints.</li>
+      <li><strong>Record</strong> failures as artifacts (don’t hand-wave them away).</li>
+      <li><strong>Modify</strong> one mechanism at a time, then re-run and compare artifacts.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Operating rule:</strong>
+      If the system “works” only when you ignore gates, constraints, termination logic, or evidence discipline,
+      then it does not work.
+    </div>
+  </section>
+
+  <!-- INDEPENDENT ASSESSMENT (OPTIONAL, CLEARLY DISCLOSED) -->
+  <section>
+    <h2>Independent Assessment (LLM Commentary)</h2>
+
+    <div class="reviewbox">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+
+      <p>
+        This repository’s strongest contribution is not multimodality—it is governance.
+        By forcing explicit modality boundaries, termination reasons, and artifact-based reconstruction,
+        it addresses the most common failure mode in multimodal work: mistaking a fluent explanation for verified evidence.
+        The labs train a professional posture: treat every output as a hypothesis until evidence is qualified and reviewed.
+      </p>
+
+      <p>
+        <strong>Disclosure:</strong> This assessment is generated commentary, not certification or endorsement.
+        Treat it as a non-authoritative opinion and apply independent human review.
+      </p>
+    </div>
+  </section>
+
+  <!-- DISCLAIMERS -->
+  <section>
+    <h2>Licensing, Governance & AI Use Disclosure</h2>
+
+    <div class="callout">
+      <p>
+        <strong>Copyright © 2026 Alejandro Reynoso.</strong>
+        All original text, structure, and pedagogical design remain the intellectual property of the author.
+      </p>
+
+      <p>
+        <strong>License:</strong> This work is released under the MIT License.
+        You may use, copy, modify, and distribute this material provided that copyright
+        and license notices are preserved.
+      </p>
+
+      <p>
+        <strong>AI use disclosure:</strong> Generative AI tools may be used to assist drafting and editing.
+        Conceptual design, validation, governance decisions, and final approval are performed by the author.
+        Responsibility for interpretation and use remains human-led.
+      </p>
+
+      <p>
+        <strong>Educational use only / Non-reliance:</strong>
+        This material does not constitute investment, trading, legal, tax, accounting, audit, or compliance advice.
+        Any professional application requires independent verification and qualified human review.
+      </p>
+
+      <p>
+        <strong>Not verified:</strong>
+        Unless explicitly stated otherwise in a specific artifact, treat outputs, claims, calculations, and conclusions as
+        <strong>Not verified</strong>.
+      </p>
+
+      <p>
+        <strong>Confidentiality and data hygiene:</strong>
+        Do not paste confidential, proprietary, regulated, or personally identifying information into external systems.
+        Use anonymization/redaction and minimum-necessary inputs by default.
+      </p>
+
+      <p>
+        <strong>No fabricated sources or claims:</strong>
+        Zero tolerance for invented citations, performance claims, fees, terms, or consequences.
+        When evidence is missing, the correct output is a verification task list, not persuasive narrative.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    AI Multimodal · Multimodal Reasoning Under Governance · Governance-First Professional Labs
+    <br/><br/>
+    <span class="muted">
+      Contact: Alejandro Reynoso · Email: areynoso@yahoo.com · GitHub: alexdibol
+    </span>
+  </footer>
+
+</main>
+</body>
+</html>
 
